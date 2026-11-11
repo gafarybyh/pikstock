@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "image-keyword-generator"
+version = "2.0.0"
+description = "Local image -> marketplace keyword generator (FastAPI + vanilla JS SPA)"
+readme = "docs/PLAN.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn==0.52.4",
+    "python-multipart==0.0.32",
+    "pillow==12.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.17.4",
+    "mypy==2.4.1",
+    "pytest==9.1.1",
+]
+
+[tool.setuptools]
+py-modules = ["app", "server", "core", "db", "signals", "paths"]
+packages = ["app_api", "kwgen"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+exclude = [".opencode", "data", "tmp", "uploads", "generate", "web", "test", "graphify-out", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B008"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+files = ["core.py", "kwgen", "db.py", "signals.py", "paths.py"]
+check_untyped_defs = true

@@ -1,0 +1,171 @@
+/* tokens.css — bagian dari stylesheet Keyword Studio. Urutan impor di app.css menentukan cascade; jangan diubah tanpa cek docs/DESIGN.md. */
+:root {
+  /* permukaan: kertas tua bertingkat */
+  --bg: #14110d;
+  --bg-soft: #191510;
+  --panel: #1e1913;
+  --panel-2: #262019;
+  --line: #332b21;
+  --line-soft: #29221a;
+  --line-hover: #443a2c;
+
+  /* teks */
+  --txt: #f3ede2;
+  --txt-dim: #c2b6a4;
+  --txt-faint: #928776;
+  --txt-ghost: #948a7a;
+
+  /* aksen: amber stempel + semantik */
+  --accent: #e8a33d;
+  --accent-soft: #f4c579;
+  --accent-ink: #201709;
+  --accent-deep: #b97a24;
+  --accent-mid: #c07f28;
+  --ok: #56c08b;
+  --warn: #e8a33d;
+  --bad: #e2685f;
+
+  /* tinta semantik di atas tint gelap */
+  --ok-ink: #7fdcb0;
+  --ok-ink-strong: #9fe9c5;
+  --ok-surface: #06231a;
+  --bad-ink: #efa49c;
+  --bad-ink-strong: #f0a49d;
+  --bad-ink-soft: #f2ada5;
+  --bad-ink-mute: #d98a83;
+  --bad-ink-deep: #d9847c;
+  --bad-ink-warm: #f4b3ac;
+  --bad-surface: #2a0709;
+  --neutral-ink: #6f6658;
+  --neutral-chev: #5a5144;
+
+  /* skala turunan aksen: isi, garis, cincin */
+  --accent-fill-4: rgba(232, 163, 61, .04);
+  --accent-fill-5: rgba(232, 163, 61, .05);
+  --accent-fill-7: rgba(232, 163, 61, .07);
+  --accent-fill-8: rgba(232, 163, 61, .08);
+  --accent-fill-10: rgba(232, 163, 61, .1);
+  --accent-fill-13: rgba(232, 163, 61, .13);
+  --accent-fill-14: rgba(232, 163, 61, .14);
+  --accent-fill-16: rgba(232, 163, 61, .16);
+  --accent-fill-24: rgba(232, 163, 61, .24);
+  --accent-fill-30: rgba(232, 163, 61, .3);
+  --accent-line-30: rgba(232, 163, 61, .3);
+  --accent-line-22: rgba(232, 163, 61, .22);
+  --accent-line-40: rgba(232, 163, 61, .4);
+  --accent-line-45: rgba(232, 163, 61, .45);
+  --accent-line-48: rgba(232, 163, 61, .48);
+  --accent-line-50: rgba(232, 163, 61, .5);
+  --accent-line-55: rgba(232, 163, 61, .55);
+  --accent-line-75: rgba(232, 163, 61, .75);
+  --accent-line-85: rgba(232, 163, 61, .85);
+  --accent-line-95: rgba(232, 163, 61, .95);
+  --accent-hover: #f6c76a;
+
+  /* skala turunan status */
+  --ok-fill-5: rgba(86, 192, 139, .05);
+  --ok-fill-10: rgba(86, 192, 139, .1);
+  --ok-fill-13: rgba(86, 192, 139, .13);
+  --ok-fill-14: rgba(86, 192, 139, .14);
+  --ok-fill-16: rgba(86, 192, 139, .16);
+  --ok-line-40: rgba(86, 192, 139, .4);
+  --ok-line-50: rgba(86, 192, 139, .5);
+  --ok-line-70: rgba(86, 192, 139, .7);
+  --bad-fill-6: rgba(226, 104, 95, .06);
+  --bad-fill-10: rgba(226, 104, 95, .1);
+  --bad-fill-13: rgba(226, 104, 95, .13);
+  --bad-line-28: rgba(226, 104, 95, .28);
+  --bad-line-35: rgba(226, 104, 95, .35);
+  --bad-line-38: rgba(226, 104, 95, .38);
+  --bad-line-45: rgba(226, 104, 95, .45);
+  --bad-line-50: rgba(226, 104, 95, .5);
+
+  /* lapisan netral: hairline, angkat, scrim */
+  --white-1: rgba(255, 255, 255, .012);
+  --white-2: rgba(255, 255, 255, .015);
+  --white-3: rgba(255, 255, 255, .028);
+  --white-4: rgba(255, 255, 255, .03);
+  --white-5: rgba(255, 255, 255, .04);
+  --white-6: rgba(255, 255, 255, .045);
+  --white-7: rgba(255, 255, 255, .06);
+  --white-8: rgba(255, 255, 255, .07);
+  --white-9: rgba(255, 255, 255, .075);
+  --white-16: rgba(255, 255, 255, .16);
+  --white-22: rgba(255, 255, 255, .22);
+  --white-35: rgba(255, 255, 255, .35);
+  --white-45: rgba(255, 255, 255, .45);
+  --scrim-22: rgba(0, 0, 0, .22);
+  --scrim-25: rgba(0, 0, 0, .25);
+  --scrim-32: rgba(0, 0, 0, .32);
+  --scrim-45: rgba(0, 0, 0, .45);
+  --scrim-55: rgba(0, 0, 0, .55);
+  --scrim-62: rgba(0, 0, 0, .62);
+  --surface-soft-glass: rgba(25, 21, 16, .82);
+  --surface-panel-glass: rgba(30, 25, 19, .92);
+  --surface-solid: #221c15;
+  --surface-solid-2: #241e17;
+  --surface-solid-3: #2e261c;
+  --surface-solid-4: #352b20;
+  --surface-thumb: #0b0906;
+  --surface-thumb-2: #0d0b08;
+  --surface-state-done: rgba(6, 35, 26, .32);
+  --surface-state-fail: rgba(42, 7, 9, .38);
+  --surface-state-run: rgba(10, 8, 6, .5);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --radius-xs: 5px; --radius-xs2: 6px; --radius-xs3: 7px; --radius-xs4: 8px;
+  --radius-md: 10px; --radius-md2: 11px; --radius-md3: 12px; --radius-md4: 13px;
+  --radius-lg: 20px; --radius-pill: 99px;
+  --shadow: 0 24px 60px -28px rgba(0, 0, 0, .9);
+  --ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-line-75);
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* skala spasi 4px */
+  --s1: 4px; --s1h: 5px; --s1t: 6px; --s1q: 7px; --s2: 8px; --s2q: 10px;
+  --s3: 12px; --s3q: 13px; --s3h: 14px; --s3w: 15px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--txt);
+  font: 15px/1.55 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-image:
+    radial-gradient(820px 460px at 8% -10%, var(--accent-fill-10), transparent 68%),
+    radial-gradient(680px 400px at 100% 4%, var(--ok-fill-5), transparent 62%);
+  background-attachment: fixed;
+}
+
+/* grain halus — tekstur kertas, bukan dekorasi berat */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 1;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+button, input, textarea { font: inherit; color: inherit; }
+
+:focus-visible { outline: none; box-shadow: var(--ring); }
+
+::selection { background: var(--accent-fill-30); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--neutral-chev) transparent; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--neutral-chev); border-radius: 99px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--neutral-ink); }

@@ -1,0 +1,9 @@
+﻿/* Hallmark · shape: app screen · genre: atmospheric · theme: custom · idea: "studio kraft tool that turns images into marketplace keywords" · vibe: "warm dark paper, amber stamp, serif names" · nav: sidebar, five views · footer: none · signature: result drawer with keyword chips · states: loading, empty, error · posture: restrained · axes: dark/roman-serif/warm · built: the project · redesign: polish · contrast: pass · fold: pass */
+/* app.css — entry stylesheet. index.html memuat bagian-bagiannya lewat <link>
+   terpisah; file ini hanya berfungsi kalau ada konsumen yang memuat app.css saja.
+   Urutan WAJIB: fonts → tokens → layout → components → responsive. */
+@import url("/static/fonts.css");
+@import url("/static/tokens.css");
+@import url("/static/layout.css");
+@import url("/static/components.css");
+@import url("/static/responsive.css");

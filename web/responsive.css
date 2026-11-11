@@ -1,0 +1,66 @@
+/* responsive.css — bagian dari stylesheet Keyword Studio. Urutan impor di app.css menentukan cascade; jangan diubah tanpa cek docs/DESIGN.md. */
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .sidebar {
+    position: sticky; top: 0; z-index: 30;
+    flex-direction: row; align-items: center; gap: var(--s3);
+    padding: var(--s2q) var(--s3h); border-right: 0; border-bottom: 1px solid var(--line-soft);
+    overflow-x: auto;
+  }
+  .brand { padding: 0; }
+  .brand-mark { width: 34px; height: 34px; font-size: 18px; border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 3px; }
+  .brand-txt, .side-foot { display: none; }
+  .nav { flex-direction: row; gap: 2px; flex: none; }
+  .nav-group { flex-direction: row; gap: 2px; }
+  .nav-group-label { display: none; }
+  .nav-settings { margin-top: 0; }
+  .nav-item { padding: var(--s2) var(--s2q); }
+  .nav-item span { display: none; }
+  .nav-item.is-active::before { display: none; }
+  .main { padding: var(--s5) 18px 70px; }
+  .cards, .skel-cards { grid-template-columns: 1fr; }
+  .result-head { align-items: flex-start; }
+  .result-head img { width: 62px; height: 62px; }
+  .rh-actions { width: 100%; }
+  .rh-actions > .btn { flex: 1 1 auto; justify-content: center; }
+  .rh-menu-list { left: 0; right: 0; min-width: 0; }
+  .rh-menu-list a,
+  .rh-menu-list button { justify-content: flex-start; }
+  .staged-bar { gap: var(--s2); }
+  .staged-bar .spacer { display: block; }
+  .staged-meta { flex: 1 1 100%; }
+  .staged-bar .staged-master { flex: 0 0 auto; }
+  .staged-bar .btn { flex: 0 0 auto; justify-content: center; }
+  .staged-bar #staged-run { flex: 1 1 100%; }
+  .input { min-width: 0; flex: 1; }
+  .set-row { grid-template-columns: 1fr; }
+  .staged-bar #run-batch { flex: 1 1 100%; }
+  .trend-head { align-items: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .drawer-act { padding: 10px 14px; gap: 8px; }
+  .dact-mk { flex: 1 1 100%; gap: 4px; }
+  .dact-chip { font-size: 11px; padding: 3px 8px; }
+  .dact-go { flex: 1 1 100%; justify-content: center; }
+  .trend-panel { padding: var(--s3q); }
+  .trend-controls { display: flex; flex-direction: column; align-items: stretch; }
+  .trend-field-geo { width: 100%; }
+  .trend-controls .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 420px) {
+  .view-head h1 { font-size: 24px; }
+  .dropzone { padding: var(--s6) var(--s4); }
+  .dropzone.is-compact { padding: var(--s2) var(--s3); }
+  .dz-mini-hint { display: none; }
+  .staged-bar { gap: var(--s1t); }
+  .staged-bar .btn { padding-left: var(--s2q); padding-right: var(--s2q); }
+  .toolbar .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

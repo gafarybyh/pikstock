@@ -1,0 +1,17 @@
+{
+  "router_url": "http://localhost:20128/v1",
+  "model": "kl/gpt-6-luna",
+  "fallback_models": [
+    "agnes/agnes-3.0-flash"
+  ],
+  "api_key": "sk-8ca3c3c31d3650ea-098gh6-9e279cd1",
+  "max_image_side": 2048,
+  "timeout_seconds": 120,
+  "temp_dir": "tmp",
+  "max_keywords": 30,
+  "max_signal_terms": 150,
+  "image_base_url": "https://ai.geraikita.com/v1/images/generations",
+  "image_api_key": "gk-JbXH01K4uQasA3zSVYJd2kQlZQFXUP18R3nvBIBf",
+  "image_model": "flux-2-flex",
+  "image_size": "1024x1024"
+}

@@ -1,0 +1,85 @@
+/* layout.css — bagian dari stylesheet Keyword Studio. Urutan impor di app.css menentukan cascade; jangan diubah tanpa cek docs/DESIGN.md. */
+/* ---------- layout ---------- */
+
+html, body { overflow-x: clip; }
+
+.app { display: grid; grid-template-columns: 248px 1fr; height: 100vh; position: relative; z-index: 2; }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+  padding: var(--s5) var(--s4);
+  background: var(--surface-soft-glass);
+  border-right: 1px solid var(--line-soft);
+  backdrop-filter: blur(16px);
+}
+
+.brand { display: flex; align-items: center; gap: var(--s3); padding: 0 6px; }
+
+.brand-mark {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: var(--radius-md2);
+  background: linear-gradient(155deg, var(--accent-soft), var(--accent) 55%, var(--accent-deep));
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 21px; line-height: 1;
+  color: var(--accent-ink);
+  box-shadow: 0 8px 22px -10px var(--accent-line-85);
+}
+
+.brand-txt { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.brand-txt strong { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.brand-txt span { font-size: 12px; color: var(--txt-faint); letter-spacing: .02em; }
+
+.nav { display: flex; flex-direction: column; gap: var(--s5); flex: 1; }
+
+.nav-group { display: flex; flex-direction: column; gap: 2px; }
+.nav-group-label {
+  padding: 0 12px var(--s1);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--txt-faint);
+}
+.nav-settings { margin-top: auto; }
+
+.nav-item {
+  position: relative;
+  display: flex; align-items: center; gap: var(--s3);
+  padding: 10px 12px;
+  border: 0; border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--txt-dim);
+  font-size: 14px; font-weight: 500;
+  text-align: left; cursor: pointer;
+  transition: background .16s, color .16s;
+}
+.nav-item svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.nav-item:hover { background: var(--white-5); color: var(--txt); }
+.nav-item.is-active { background: var(--accent-fill-13); color: var(--accent-soft); font-weight: 600; }
+
+.side-foot {
+  display: flex; flex-direction: column; gap: var(--s2);
+  padding: var(--s3);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md3);
+  background: var(--scrim-22);
+  font-size: 13px;
+}
+.stat-row { display: flex; justify-content: space-between; gap: var(--s2); color: var(--txt-faint); }
+.stat-row b { color: var(--txt-dim); font-weight: 600; font-variant-numeric: tabular-nums; }
+.ellipsis { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.main { overflow-y: auto; padding: 40px 44px 90px; }
+.view { max-width: 1100px; margin: 0 auto; }
+
+.view-head { margin-bottom: var(--s5); }
+.view-head h1 {
+  margin: 0 0 var(--s1);
+  font-family: var(--font-display);
+  font-size: clamp(27px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: -.018em;
+  line-height: 1.12;
+}
+.view-head p { margin: 0; color: var(--txt-faint); font-size: 14px; max-width: 62ch; line-height: 1.55; }

@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#14110d">
+<title>PIKSTOCK · Keyword Generator</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23e8a33d'/%3E%3Ctext x='16' y='22' font-size='17' font-family='serif' font-weight='700' fill='%23201709' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/static/vendor/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/static/vendor/fonts/plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/fonts.css">
+<link rel="stylesheet" href="/static/tokens.css">
+<link rel="stylesheet" href="/static/layout.css">
+<link rel="stylesheet" href="/static/components.css">
+<link rel="stylesheet" href="/static/responsive.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">K</div>
+      <div class="brand-txt">
+        <strong>PIKSTOCK</strong>
+        <span>Keyword Generator</span>
+      </div>
+    </div>
+
+    <nav class="nav" id="nav">
+      <div class="nav-group" role="group" aria-labelledby="nav-keyword-label">
+        <div class="nav-group-label" id="nav-keyword-label">Keyword</div>
+        <button class="nav-item is-active" data-view="single">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Generate Keyword</span>
+        </button>
+        <button class="nav-item" data-view="batch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+          <span>Proses Folder</span>
+        </button>
+        <button class="nav-item" data-view="history" data-scope="keyword">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span>Riwayat Keyword</span>
+        </button>
+      </div>
+      <div class="nav-group" role="group" aria-labelledby="nav-extract-label">
+        <div class="nav-group-label" id="nav-extract-label">Ekstraksi</div>
+        <button class="nav-item" data-view="extract">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h3"/><path d="M17 4h3v3"/><path d="M20 17v3h-3"/><path d="M7 20H4v-3"/><rect x="8" y="8" width="8" height="8" rx="2"/></svg>
+          <span>Ekstrak Gambar</span>
+        </button>
+        <button class="nav-item" data-view="history" data-scope="extract">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span>Riwayat Ekstrak</span>
+        </button>
+      </div>
+      <div class="nav-group" role="group" aria-labelledby="nav-image-label">
+        <div class="nav-group-label" id="nav-image-label">Generate Gambar</div>
+        <button class="nav-item" data-view="image">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5L5 21"/><path d="M14 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg>
+          <span>Generate Gambar</span>
+        </button>
+        <button class="nav-item" data-view="history" data-scope="image">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <span>Riwayat Gambar</span>
+        </button>
+      </div>
+      <button class="nav-item nav-settings" data-view="settings">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Pengaturan</span>
+      </button>
+    </nav>
+
+    <div class="side-foot">
+      <div class="stat-row"><span>Total proses</span><b id="stat-total">0</b></div>
+      <div class="stat-row"><span>Rata-rata</span><b id="stat-avg">0</b></div>
+      <div class="stat-row"><span>Model ekstrak</span><b id="stat-model" class="ellipsis">-</b></div>
+      <div class="stat-row"><span>Model gambar</span><b id="stat-image-model" class="ellipsis">-</b></div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- ---------- SINGLE ---------- -->
+    <section class="view" id="view-single">
+      <header class="view-head">
+        <h1>Generate Keyword</h1>
+        <p>Pilih satu atau banyak gambar, tentukan marketplace, lalu mulai generate.</p>
+      </header>
+
+      <div class="toolbar mk-pick" data-mk-group role="group" aria-label="Pilih marketplace">
+        <span class="mk-label">Marketplace:</span>
+        <label class="check"><input type="checkbox" data-mk="etsy"> <span>Etsy</span></label>
+        <label class="check"><input type="checkbox" data-mk="canva"> <span>Canva</span></label>
+        <label class="check"><input type="checkbox" data-mk="creative_market"> <span>Creative Market</span></label>
+        <label class="check"><input type="checkbox" data-mk="universal"> <span>Universal</span></label>
+        <label class="check"><input type="checkbox" data-mk="adobe"> <span>Adobe Stock</span></label>
+        <span class="mk-hint mk-state" data-mk-state aria-live="polite"></span>
+      </div>
+
+      <input type="file" id="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" multiple hidden>
+      <div class="dropzone" id="drop">
+        <div class="dz-full">
+          <div class="dz-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          </div>
+          <div class="dz-title">Tarik gambar ke sini</div>
+          <div class="dz-sub">atau pilih langsung dari komputer, bisa banyak sekaligus.</div>
+          <div class="dz-meta">PNG, JPG, WEBP, GIF, BMP (maks 40 MB)</div>
+          <div class="dz-note">Gambar masuk daftar dulu, belum diproses sampai kamu klik Mulai generate.</div>
+        </div>
+        <button class="btn btn-primary dz-pick" id="drop-pick" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          Pilih gambar
+        </button>
+        <div class="dz-mini">
+          <button class="btn btn-ghost dz-mini-btn" id="drop-add" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            Tambah gambar
+          </button>
+          <span class="dz-mini-hint">klik atau tarik file ke sini</span>
+        </div>
+      </div>
+
+      <div class="staged" id="staged" hidden>
+        <div class="staged-bar">
+          <div class="staged-meta">
+            <span class="staged-count" id="staged-count">0 gambar</span>
+            <span class="staged-summary" id="staged-summary" aria-live="polite"></span>
+          </div>
+          <label class="check staged-master">
+            <input type="checkbox" id="staged-all">
+            <span>Pilih semua</span>
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-danger-ghost" id="staged-clear" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+            Hapus semua
+          </button>
+          <button class="btn btn-primary" id="staged-run" type="button" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 8-14 8z"/></svg>
+            <span id="staged-run-txt">Mulai generate</span>
+          </button>
+        </div>
+        <p class="staged-hint" id="staged-hint" role="status" hidden></p>
+        <div class="progress" id="staged-progress" hidden>
+          <div class="bar"><div class="fill" id="staged-fill"></div></div>
+          <div class="prog-meta">
+            <span id="staged-ptext">0 / 0</span>
+            <span id="staged-pcurrent" class="ellipsis"></span>
+          </div>
+        </div>
+        <div class="batch-grid" id="staged-grid"></div>
+      </div>
+
+      <div class="statusline" id="single-status" hidden></div>
+      <div class="results" id="single-result"></div>
+    </section>
+
+    <!-- ---------- BATCH ---------- -->
+    <section class="view" id="view-batch" hidden>
+      <header class="view-head">
+        <h1>Proses Folder</h1>
+        <p>Pilih satu folder, centang gambar yang ingin diproses, lalu jalankan sekaligus dengan progres langsung.</p>
+      </header>
+
+      <div class="toolbar mk-pick" data-mk-group role="group" aria-label="Pilih marketplace">
+        <span class="mk-label">Marketplace:</span>
+        <label class="check"><input type="checkbox" data-mk="etsy"> <span>Etsy</span></label>
+        <label class="check"><input type="checkbox" data-mk="canva"> <span>Canva</span></label>
+        <label class="check"><input type="checkbox" data-mk="creative_market"> <span>Creative Market</span></label>
+        <label class="check"><input type="checkbox" data-mk="universal"> <span>Universal</span></label>
+        <label class="check"><input type="checkbox" data-mk="adobe"> <span>Adobe Stock</span></label>
+        <span class="mk-hint mk-state" data-mk-state aria-live="polite"></span>
+      </div>
+
+      <div class="dropzone folder-zone" id="folder-zone">
+        <div class="dz-full">
+          <div class="dz-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div class="dz-title">Pilih folder gambar</div>
+          <div class="dz-sub" id="folder-label">Belum ada folder dipilih</div>
+          <div class="dz-note">Thumbnail dimuat dari disk. Gambar baru diproses setelah kamu klik Mulai proses.</div>
+        </div>
+        <button class="btn btn-primary dz-pick" id="pick-folder" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          Pilih folder
+        </button>
+      </div>
+
+      <div class="staged" id="batch-staged" hidden>
+        <div class="staged-bar" id="batch-bar">
+          <div class="staged-meta">
+            <span class="staged-count" id="sel-count">0 dipilih</span>
+          </div>
+          <label class="check staged-master">
+            <input type="checkbox" id="sel-all">
+            <span>Pilih semua</span>
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost" id="cancel-batch" type="button" hidden>Batal</button>
+          <button class="btn btn-primary" id="run-batch" type="button" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 8-14 8z"/></svg>
+            <span>Mulai proses</span>
+          </button>
+        </div>
+        <div class="progress" id="progress" hidden>
+          <div class="bar"><div class="fill" id="prog-fill"></div></div>
+          <div class="prog-meta">
+            <span id="prog-text">0 / 0</span>
+            <span id="prog-current" class="ellipsis"></span>
+          </div>
+        </div>
+        <div class="batch-grid" id="batch-grid"></div>
+      </div>
+
+      <div class="batch-log" id="batch-log"></div>
+    </section>
+
+    <!-- ---------- EXTRACT ---------- -->
+    <section class="view" id="view-extract" hidden>
+      <header class="view-head">
+        <h1>Ekstrak Gambar</h1>
+        <p>Pilih satu atau banyak gambar, lalu ekstrak deskripsi visual 55 sampai 85 kata. Tidak menghasilkan keyword marketplace.</p>
+      </header>
+
+      <input type="file" id="ex-file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" multiple hidden>
+      <div class="dropzone" id="ex-drop" role="button" tabindex="0" aria-label="Pilih gambar untuk diekstrak">
+        <div class="dz-full">
+          <div class="dz-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+          </div>
+          <div class="dz-title">Tarik gambar ke sini</div>
+          <div class="dz-sub">atau pilih langsung dari komputer, bisa banyak sekaligus.</div>
+          <div class="dz-meta">PNG, JPG, WEBP, GIF, BMP (maks 40 MB)</div>
+          <div class="dz-note">Gambar masuk daftar dulu, belum diproses sampai kamu klik Ekstrak deskripsi.</div>
+        </div>
+        <button class="btn btn-primary dz-pick" id="ex-pick" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          Pilih gambar
+        </button>
+        <div class="dz-mini">
+          <button class="btn btn-ghost dz-mini-btn" id="ex-add" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            Tambah gambar
+          </button>
+          <span class="dz-mini-hint">klik atau tarik file ke sini</span>
+        </div>
+      </div>
+
+      <div class="staged" id="ex-staged" hidden>
+        <div class="staged-bar">
+          <div class="staged-meta">
+            <span class="staged-count" id="ex-staged-count">0 gambar</span>
+            <span class="staged-summary" id="ex-staged-summary" aria-live="polite"></span>
+          </div>
+          <label class="check staged-master">
+            <input type="checkbox" id="ex-staged-all">
+            <span>Pilih semua</span>
+          </label>
+          <div class="spacer"></div>
+          <button class="btn btn-danger-ghost" id="ex-staged-clear" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+            Hapus semua
+          </button>
+          <button class="btn btn-primary" id="ex-staged-run" type="button" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 8-14 8z"/></svg>
+            <span id="ex-staged-run-txt">Ekstrak deskripsi</span>
+          </button>
+        </div>
+        <p class="staged-hint" id="ex-staged-hint" role="status" hidden></p>
+        <div class="progress" id="ex-staged-progress" hidden>
+          <div class="bar"><div class="fill" id="ex-staged-fill"></div></div>
+          <div class="prog-meta">
+            <span id="ex-staged-ptext">0 / 0</span>
+            <span id="ex-staged-pcurrent" class="ellipsis"></span>
+          </div>
+        </div>
+        <div class="batch-grid" id="ex-staged-grid"></div>
+      </div>
+
+      <div class="statusline" id="ex-status" role="status" aria-live="polite" hidden></div>
+      <div class="results" id="ex-result"></div>
+    </section>
+
+    <!-- ---------- GENERATE GAMBAR ---------- -->
+    <section class="view" id="view-image" hidden>
+      <header class="view-head">
+        <h1>Generate Gambar</h1>
+        <p>Tulis prompt, pilih jumlah dan ukuran, lalu generate. Hasil tersimpan di Riwayat Gambar.</p>
+      </header>
+
+      <div class="img-layout">
+        <form class="img-compose card" id="img-form" autocomplete="off">
+          <div class="card-body">
+            <label class="set-field">
+              <span class="field-label">Prompt</span>
+              <textarea class="input textarea" id="img-prompt" rows="6" maxlength="4000" required
+                        placeholder="Contoh: kucing oranye duduk di dekat jendela, gaya kartun, cahaya pagi"></textarea>
+              <span class="set-hint"><span id="img-count">0</span> / 4000 karakter</span>
+            </label>
+            <div class="set-row">
+              <label class="set-field">
+                <span class="field-label">Jumlah gambar</span>
+                <select class="input" id="img-n">
+                  <option value="1" selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </label>
+              <label class="set-field">
+                <span class="field-label">Ukuran</span>
+                <select class="input" id="img-size">
+                  <option value="">Sesuai pengaturan</option>
+                  <option value="auto">auto</option>
+                  <option value="1024x1024">1024 x 1024</option>
+                  <option value="1536x1024">1536 x 1024</option>
+                  <option value="1024x1536">1024 x 1536</option>
+                  <option value="1792x1024">1792 x 1024</option>
+                  <option value="1024x1792">1024 x 1792</option>
+                </select>
+              </label>
+            </div>
+            <div class="img-compose-foot">
+              <span class="set-hint" id="img-status" role="status" aria-live="polite"></span>
+              <button class="btn btn-primary" type="submit" id="img-run">Generate</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="img-output">
+          <div class="results" id="img-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- HISTORY ---------- -->
+    <section class="view" id="view-history" hidden>
+      <header class="view-head">
+        <h1 id="history-title">Riwayat Keyword</h1>
+        <p id="history-desc">Semua hasil keyword tersimpan otomatis. Bisa dicari, dibuka ulang, atau dihapus.</p>
+      </header>
+
+      <div class="toolbar">
+        <input class="input" id="history-q" type="search" placeholder="Cari nama file atau isi keyword…">
+        <button class="btn btn-ghost" id="history-refresh">Muat ulang</button>
+        <div class="spacer"></div>
+        <button class="btn btn-ghost" id="history-export" title="Ekspor proses yang sedang tampil">Ekspor CSV</button>
+      </div>
+
+      <div class="hist-filter">
+        <div class="seg" id="hist-status" role="group" aria-label="Filter status">
+          <button class="seg-btn is-on" data-status="all">Semua</button>
+          <button class="seg-btn" data-status="ok">Berhasil</button>
+          <button class="seg-btn" data-status="bad">Gagal</button>
+          <button class="seg-btn" data-status="fav">Favorit</button>
+        </div>
+        <div class="seg" id="hist-source" role="group" aria-label="Filter sumber">
+          <button class="seg-btn is-on" data-source="all">Semua sumber</button>
+          <button class="seg-btn" data-source="upload">Unggah</button>
+          <button class="seg-btn" data-source="batch">Proses Folder</button>
+        </div>
+        <select class="input" id="hist-market" aria-label="Filter marketplace">
+          <option value="all">Semua marketplace</option>
+          <option value="etsy">Etsy</option>
+          <option value="canva">Canva</option>
+          <option value="creative_market">Creative Market</option>
+          <option value="universal">Universal</option>
+          <option value="adobe">Adobe Stock</option>
+        </select>
+        <div class="spacer"></div>
+        <span class="hist-count" id="history-count"></span>
+        <button class="btn btn-ghost" id="history-select">Pilih</button>
+      </div>
+
+      <div class="bulkbar" id="bulkbar" hidden>
+        <span class="bulk-count" id="bulk-count">0 dipilih</span>
+        <div class="spacer"></div>
+        <button class="btn btn-danger-ghost" id="bulk-del" disabled>Hapus terpilih</button>
+        <button class="btn btn-ghost" id="bulk-all">Pilih semua</button>
+      </div>
+
+      <div class="history-list" id="history-list"></div>
+      <nav class="history-pager" id="history-pager" aria-label="Halaman riwayat" hidden></nav>
+    </section>
+
+    <!-- ---------- SETTINGS ---------- -->
+    <section class="view" id="view-settings" hidden>
+      <header class="view-head">
+        <h1>Pengaturan</h1>
+        <p>Koneksi AI, pemrosesan gambar, dan batas keyword. Perubahan langsung dipakai tanpa restart.</p>
+      </header>
+
+      <form class="settings-form" id="settings-form" autocomplete="off">
+        <div class="settings-card">
+          <div class="settings-card-head">Koneksi AI</div>
+          <div class="settings-card-body">
+            <label class="set-field">
+              <span class="field-label">Alamat router (base URL)</span>
+              <input class="input" id="set-router" type="url" placeholder="http://localhost:20128/v1" required>
+              <span class="set-hint">Alamat router AI. Cukup sampai <code>/v1</code>; aplikasi menambahkan endpoint sendiri.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Model utama</span>
+              <input class="input" id="set-model" type="text" placeholder="open_code_free" required>
+              <span class="set-hint">Nama model sesuai daftar di router.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Model cadangan</span>
+              <textarea class="input textarea" id="set-fallbacks" rows="3" placeholder="satu model per baris"></textarea>
+              <span class="set-hint">Dicoba berurutan jika model utama gagal. Satu model per baris.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Kunci API</span>
+              <input class="input" id="set-key" type="password" autocomplete="new-password">
+              <span class="set-hint" id="set-key-hint">Belum diisi</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-head">Generate Gambar</div>
+          <div class="settings-card-body">
+            <label class="set-field">
+              <span class="field-label">Alamat endpoint gambar (base URL)</span>
+              <input class="input" id="set-image-url" type="url" placeholder="https://ai.geraikita.com/v1">
+              <span class="set-hint">Cukup sampai <code>/v1</code>; aplikasi menambahkan <code>/images/generations</code> sendiri.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Model gambar</span>
+              <input class="input" id="set-image-model" type="text" placeholder="flux-2-flex">
+            </label>
+            <label class="set-field">
+              <span class="field-label">Kunci API gambar</span>
+              <input class="input" id="set-image-key" type="password" autocomplete="new-password">
+              <span class="set-hint" id="set-image-key-hint">Belum diisi</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Ukuran default</span>
+              <select class="input" id="set-image-size">
+                <option value="auto">auto</option>
+                <option value="1024x1024">1024 x 1024</option>
+                <option value="1536x1024">1536 x 1024</option>
+                <option value="1024x1536">1024 x 1536</option>
+                <option value="1792x1024">1792 x 1024</option>
+                <option value="1024x1792">1024 x 1792</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-head">Proses gambar</div>
+          <div class="settings-card-body">
+            <div class="set-row">
+              <label class="set-field">
+                <span class="field-label">Sisi maksimal gambar (px)</span>
+                <input class="input" id="set-max-side" type="number" min="256" max="4096" step="64">
+              </label>
+              <label class="set-field">
+                <span class="field-label">Batas waktu per panggilan (detik)</span>
+                <input class="input" id="set-timeout" type="number" min="10" max="600" step="10">
+              </label>
+            </div>
+            <label class="set-field">
+              <span class="field-label">Jumlah keyword per marketplace</span>
+              <input class="input" id="set-max-kw" type="number" min="5" max="30" step="1">
+              <span class="set-hint">5 sampai 30, berlaku untuk semua marketplace. Batas tiap platform tetap berlaku: Etsy 13, Creative Market 10, Canva 20, Universal 30, Adobe Stock 49. Yang dipakai adalah angka terkecil. 30 berarti batas penuh.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Batas keyword untuk cek Google Suggest</span>
+              <input class="input" id="set-max-sig" type="number" min="20" max="500" step="10">
+              <span class="set-hint">20 sampai 500, default 150. Jika lebih kecil dari jumlah tag, sisanya dilewati dan ditampilkan di UI.</span>
+            </label>
+            <label class="set-field">
+              <span class="field-label">Folder sementara</span>
+              <input class="input" id="set-temp" type="text" placeholder="tmp">
+              <span class="set-hint">Relatif terhadap folder proyek. Menyimpan hasil JSON dan TXT.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-actions">
+          <span class="set-hint" id="set-status" role="status"></span>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost" type="button" id="set-reload">Muat ulang</button>
+          <button class="btn btn-primary" type="submit" id="set-save">Simpan pengaturan</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+</div>
+
+<!-- detail drawer -->
+<div class="drawer-wrap" id="drawer" hidden>
+  <div class="drawer-scrim" id="drawer-scrim"></div>
+  <aside class="drawer" id="drawer-panel" role="dialog" aria-modal="true" aria-label="Detail hasil">
+    <header class="drawer-head">
+      <button class="icon-btn" id="drawer-prev" aria-label="Hasil sebelumnya" title="Sebelumnya (←)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="icon-btn" id="drawer-next" aria-label="Hasil berikutnya" title="Berikutnya (→)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="ellipsis" id="drawer-title">Detail</div>
+      <button class="icon-btn" id="drawer-close" aria-label="Tutup">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+      <div class="drawer-act" id="drawer-act" hidden>
+        <span class="dact-label" id="dact-label">Marketplace</span>
+        <div class="dact-mk" role="group" aria-label="Marketplace untuk generate ulang" id="dact-mk"></div>
+        <button class="btn btn-primary dact-go" id="drawer-regen" type="button">Generate ulang</button>
+      </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </aside>
+</div>
+
+<div class="confirm-wrap" id="confirm" hidden>
+  <div class="confirm-scrim" id="confirm-scrim"></div>
+  <div class="confirm" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <h2 class="confirm-title" id="confirm-title">Hapus proses ini dari riwayat?</h2>
+    <p class="confirm-text" id="confirm-text">Proses beserta thumbnail-nya akan dihapus. Kamu bisa membatalkan dalam beberapa detik setelah menghapus.</p>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" type="button" id="confirm-cancel">Batal</button>
+      <button class="btn btn-danger" type="button" id="confirm-ok">Hapus</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/static/vendor/motion.min.js"></script>
+<script type="module" src="/static/js/main.js"></script>
+</body>
+</html>
